@@ -109,30 +109,40 @@ a {
   }
 }
 
-.wax {
+.scroll-picks {
   position: absolute;
   left: 50%;
-  top: 38%;
-  width: min(28vw, 180px);
-  translate: -50% 0;
+  top: auto;
+  bottom: 6%;
   z-index: 3;
-  transform-origin: center top;
-  animation: wax-park linear both;
-  animation-timeline: --unroll;
-  animation-range: contain 8% contain 42%;
-  will-change: transform;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1rem;
+  width: min(92vw, 44rem);
+  translate: -50% 0;
 }
 
-.wax img {
+.scroll-pick {
+  margin: 0;
+  width: min(22vw, 7.5rem);
+  text-align: center;
+}
+
+.scroll-pick img {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 6px;
 }
 
-@keyframes wax-park {
-  to {
-    transform: translate(38vw, -28vh) scale(0.48);
-  }
+.scroll-pick figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-shadow: 0 1px 8px rgba(14, 13, 11, 0.85);
 }
 
 .seal-copy {
@@ -363,8 +373,8 @@ a {
     max-width: 100%;
   }
 
-  .wax {
-    width: min(42vw, 160px);
+  .scroll-pick {
+    width: min(40vw, 7rem);
   }
 }
 
@@ -386,14 +396,18 @@ a {
     min-height: 100vh;
   }
 
-  .wax {
-    animation: none;
-    top: 8%;
+  .scroll-picks {
+    position: relative;
     left: auto;
-    right: 8%;
-    translate: 0;
-    transform: none;
-    width: 88px;
+    top: auto;
+    translate: none;
+    margin: 1.5rem auto 0;
+    padding-top: 1.5rem;
+  }
+
+  .scroll-pick figcaption {
+    color: var(--ink);
+    text-shadow: none;
   }
 
   .seal-copy {
@@ -439,15 +453,18 @@ a {
     min-height: 72vh;
   }
 
-  .wax {
-    animation: none;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+  .scroll-picks {
+    position: relative;
     left: auto;
-    translate: 0;
-    transform: none;
-    width: 72px;
+    top: auto;
+    translate: none;
+    margin: 1.25rem auto 0;
+    padding-top: 1.25rem;
+  }
+
+  .scroll-pick figcaption {
+    color: var(--ink);
+    text-shadow: none;
   }
 
   .seal-copy {
