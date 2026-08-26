@@ -88,50 +88,45 @@ a {
   contain: paint;
 }
 
-.sheet {
-  position: absolute;
-  inset: 0;
-  background-color: var(--cream);
-  background-image: url("/parchment-grain.webp");
-  background-size: 180px 180px;
-  clip-path: inset(46% 18% 46% 18% round 40% 40% 40% 40%);
-  animation: unroll linear both;
-  animation-timeline: --unroll;
-  animation-range: contain 8% contain 42%;
-}
-
-@keyframes unroll {
-  from {
-    clip-path: inset(46% 18% 46% 18% round 40% 40% 40% 40%);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
 .hero-scroll {
   position: absolute;
   left: 50%;
-  top: 28%;
-  width: min(42vw, 240px);
+  bottom: 7%;
+  width: min(36vw, 220px);
   translate: -50% 0;
   z-index: 3;
-  transform-origin: center top;
-  animation: scroll-park linear both;
+  transform-origin: center center;
+  animation: scroll-open linear both;
   animation-timeline: --unroll;
-  animation-range: contain 8% contain 42%;
-  will-change: transform;
+  animation-range: contain 0% contain 52%;
+  will-change: transform, filter;
 }
 
 .hero-scroll img {
   display: block;
   width: 100%;
   height: auto;
+  animation: ember 1.6s ease-in-out infinite;
 }
 
-@keyframes scroll-park {
-  to {
-    transform: translate(34vw, -22vh) scale(0.52);
+@keyframes scroll-open {
+  from {
+    transform: scaleX(0.16) scaleY(0.88);
+    filter: brightness(0.55);
+  }
+  70% {
+    transform: scaleX(1.04) scaleY(1.02);
+    filter: brightness(1.08) drop-shadow(0 0 22px rgba(232, 163, 92, 0.5));
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+    filter: brightness(1) drop-shadow(0 0 14px rgba(232, 163, 92, 0.35));
+  }
+}
+
+@keyframes ember {
+  50% {
+    filter: drop-shadow(0 10px 18px rgba(232, 163, 92, 0.55));
   }
 }
 
@@ -163,7 +158,7 @@ a {
 
 .title-wrap {
   position: absolute;
-  inset: 16% 6% 22%;
+  inset: 10% 6% 32%;
   z-index: 2;
 }
 
@@ -176,7 +171,7 @@ a {
 
 .title-line {
   fill: transparent;
-  stroke: #1a140c;
+  stroke: #f3ebe0;
   stroke-width: 1.4;
   stroke-linejoin: round;
   stroke-dasharray: 1800;
@@ -184,7 +179,7 @@ a {
   paint-order: stroke fill;
   animation: ink linear both;
   animation-timeline: --unroll;
-  animation-range: contain 48% contain 88%;
+  animation-range: contain 36% contain 88%;
 }
 
 .title-ember {
@@ -198,7 +193,7 @@ a {
   }
   100% {
     stroke-dashoffset: 0;
-    fill: var(--ink);
+    fill: var(--cream);
   }
 }
 
@@ -379,21 +374,15 @@ a {
     min-height: 100vh;
   }
 
-  .sheet {
-    animation: none;
-    clip-path: none;
-    position: relative;
-    min-height: 100vh;
-  }
-
   .hero-scroll {
     animation: none;
-    top: 8%;
-    left: auto;
-    right: 8%;
-    translate: 0;
     transform: none;
-    width: 120px;
+    filter: none;
+    width: min(40vw, 180px);
+  }
+
+  .hero-scroll img {
+    animation: none;
   }
 
   .seal-copy {
@@ -411,7 +400,7 @@ a {
   .title-line {
     animation: none;
     stroke-dashoffset: 0;
-    fill: var(--ink);
+    fill: var(--cream);
     stroke: transparent;
   }
 
@@ -432,22 +421,15 @@ a {
     min-height: auto;
   }
 
-  .sheet {
-    animation: none;
-    clip-path: none;
-    position: relative;
-    min-height: 72vh;
-  }
-
   .hero-scroll {
     animation: none;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    left: auto;
-    translate: 0;
     transform: none;
-    width: 96px;
+    filter: none;
+    width: min(42vw, 160px);
+  }
+
+  .hero-scroll img {
+    animation: none;
   }
 
   .seal-copy {
@@ -472,7 +454,7 @@ a {
   .title-line {
     animation: none;
     stroke-dashoffset: 0;
-    fill: var(--ink);
+    fill: var(--cream);
     stroke: transparent;
   }
 
