@@ -152,6 +152,7 @@ a {
   position: absolute;
   inset: 10% 6% 32%;
   z-index: 2;
+  animation: title-arrive 1s ease-out both;
 }
 
 .title-svg {
@@ -163,29 +164,54 @@ a {
 
 .title-line {
   fill: transparent;
-  stroke: #f3ebe0;
-  stroke-width: 1.4;
+  stroke: #e8a35c;
+  stroke-width: 2;
   stroke-linejoin: round;
   stroke-dasharray: 1800;
   stroke-dashoffset: 1800;
   paint-order: stroke fill;
-  animation: ink linear both;
-  animation-timeline: --unroll;
-  animation-range: contain 36% contain 88%;
+  animation: title-burn 2.2s ease-out both;
 }
 
-.title-ember {
-  filter: drop-shadow(0 0 6px #e8a35c);
+.title-line-2 {
+  animation-delay: 0.28s;
 }
 
-@keyframes ink {
-  72% {
-    stroke-dashoffset: 0;
+@keyframes title-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(42px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes title-burn {
+  0% {
     fill: transparent;
+    stroke: #e8a35c;
+    stroke-dashoffset: 1800;
+    filter: none;
+  }
+  42% {
+    fill: transparent;
+    stroke: #e8a35c;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 8px #e8a35c);
+  }
+  68% {
+    fill: #e8a35c;
+    stroke: #f3ebe0;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 22px #e8a35c);
   }
   100% {
+    fill: #f3ebe0;
+    stroke: #f3ebe0;
     stroke-dashoffset: 0;
-    fill: var(--cream);
+    filter: drop-shadow(0 0 5px rgba(232, 163, 92, 0.55));
   }
 }
 
@@ -394,11 +420,16 @@ a {
     text-shadow: none;
   }
 
+  .title-wrap,
   .title-line {
     animation: none;
+  }
+
+  .title-line {
     stroke-dashoffset: 0;
     fill: var(--cream);
     stroke: transparent;
+    filter: none;
   }
 
   .mark {
@@ -446,6 +477,7 @@ a {
     min-height: 12rem;
     max-height: 18rem;
     margin: 0 1rem;
+    animation: none;
   }
 
   .title-line {
@@ -453,6 +485,7 @@ a {
     stroke-dashoffset: 0;
     fill: var(--cream);
     stroke: transparent;
+    filter: none;
   }
 
   .mark {

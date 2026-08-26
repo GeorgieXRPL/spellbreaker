@@ -11,7 +11,7 @@ export function TitleInk() {
         aria-hidden="true"
       >
         <text
-          className="title-line"
+          className="title-line title-line-1"
           x="50%"
           y="38%"
           textAnchor="middle"
@@ -21,15 +21,14 @@ export function TitleInk() {
           SPELL
         </text>
         <text
-          className="title-line"
+          className="title-line title-line-2"
           x="50%"
           y="86%"
           textAnchor="middle"
           fontSize="148"
           fontWeight="700"
         >
-          BREAKE
-          <tspan className="title-ember">R</tspan>
+          BREAKER
         </text>
       </svg>
     </div>
