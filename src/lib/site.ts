@@ -14,7 +14,7 @@ export const copy = {
   cutHeading: "How a story gets cut",
   cutBody:
     "Short-form is 6 beats. Long-form is 12. Each clip picks Imagine or Seedance. Type over the steward line when it is wrong. Preview the cut. Lay one instrumental bed under it.",
-  ctaHeading: "Open the studio",
+  ctaHeading: "Opening soon",
   ctaPrimary: "New story",
   ctaSecondary: "Connect Grok",
   footer: "Spell Breaker",

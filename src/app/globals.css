@@ -302,6 +302,11 @@ a {
   padding-bottom: 1rem;
 }
 
+.cta-soon {
+  margin: 0;
+  color: #5c554c;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
