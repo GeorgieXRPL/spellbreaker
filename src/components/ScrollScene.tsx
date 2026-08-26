@@ -1,4 +1,3 @@
-import { ChainBadge } from "./ChainBadge";
 import { TitleInk } from "./TitleInk";
 import { WaxSeal } from "./WaxSeal";
 
@@ -9,7 +8,6 @@ export function ScrollScene() {
         <div className="sheet" />
         <WaxSeal />
         <TitleInk />
-        <ChainBadge />
       </div>
     </section>
   );

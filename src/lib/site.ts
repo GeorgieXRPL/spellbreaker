@@ -13,8 +13,6 @@ export const copy = {
   title: "Spell Breaker",
   description:
     "Timeline studio for a brief, a beat map, and a cut. Imagine, Seedance, and a Grok desk.",
-  sealLine: "Launching on Robinhood Chain",
-  chainId: `Chain id ${chain.id}`,
   explorer: "Explorer",
   whatHeading: "The timeline studio",
   whatBody:

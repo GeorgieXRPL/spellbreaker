@@ -27,9 +27,6 @@ export default function OpengraphImage() {
         >
           SPELL BREAKER
         </div>
-        <div style={{ marginTop: 18, fontSize: 22, color: "#5c554c" }}>
-          Launching on Robinhood Chain
-        </div>
       </div>
     ),
     { ...size },
