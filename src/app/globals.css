@@ -1,26 +1,483 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0e0d0b;
+  --cream: #f3ebe0;
+  --ink: #0e0d0b;
+  --muted: #9a9184;
+  --amber: #e8a35c;
+  --teal: #5fafa0;
+  --line: #2e2a22;
+  --font-display: var(--font-cinzel), Georgia, serif;
+  --font-body: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--cream);
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  background: var(--bg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--font-body);
+}
+
+a {
+  color: inherit;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 20;
+  background: var(--cream);
+  color: var(--ink);
+  padding: 0.4rem 0.75rem;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.hero-track {
+  height: 180vh;
+  view-timeline-name: --unroll;
+  view-timeline-axis: block;
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+  contain: paint;
+}
+
+.sheet {
+  position: absolute;
+  inset: 0;
+  background-color: var(--cream);
+  background-image: url("/parchment-grain.webp");
+  background-size: 180px 180px;
+  clip-path: inset(46% 18% 46% 18% round 40% 40% 40% 40%);
+  animation: unroll linear both;
+  animation-timeline: --unroll;
+  animation-range: contain 8% contain 42%;
+}
+
+@keyframes unroll {
+  from {
+    clip-path: inset(46% 18% 46% 18% round 40% 40% 40% 40%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.wax {
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: min(28vw, 180px);
+  translate: -50% 0;
+  z-index: 3;
+  transform-origin: center top;
+  animation: wax-park linear both;
+  animation-timeline: --unroll;
+  animation-range: contain 8% contain 42%;
+  will-change: transform;
+}
+
+.wax img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes wax-park {
+  to {
+    transform: translate(38vw, -28vh) scale(0.48);
+  }
+}
+
+.seal-copy {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  z-index: 4;
+  width: min(90vw, 28rem);
+  translate: -50% 0;
+  text-align: center;
+  color: var(--cream);
+  mix-blend-mode: normal;
+  animation: seal-fade linear both;
+  animation-timeline: --unroll;
+  animation-range: contain 8% contain 28%;
+}
+
+.hero-stage .seal-copy {
+  text-shadow: 0 1px 12px rgba(14, 13, 11, 0.85);
+}
+
+@keyframes seal-fade {
+  to {
+    opacity: 0;
+    translate: -50% 12px;
+  }
+}
+
+.title-wrap {
+  position: absolute;
+  inset: 16% 6% 22%;
+  z-index: 2;
+}
+
+.title-svg {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-display);
+  overflow: visible;
+}
+
+.title-line {
+  fill: transparent;
+  stroke: #1a140c;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  paint-order: stroke fill;
+  animation: ink linear both;
+  animation-timeline: --unroll;
+  animation-range: contain 48% contain 88%;
+}
+
+.title-ember {
+  filter: drop-shadow(0 0 6px #e8a35c);
+}
+
+@keyframes ink {
+  72% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: var(--ink);
+  }
+}
+
+.page {
+  position: relative;
+  background-color: var(--cream);
+  background-image: url("/parchment-grain.webp");
+  background-size: 180px 180px;
+  color: var(--ink);
+}
+
+.story {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 65ch) minmax(1rem, 1fr);
+  row-gap: 4.5rem;
+  padding: 4.5rem 0 2rem;
+}
+
+.verse {
+  grid-column: 2;
+}
+
+.verse h2 {
+  position: sticky;
+  top: 1.25rem;
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 0.95;
+  background: color-mix(in srgb, var(--cream) 86%, transparent);
+}
+
+.verse p {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  max-width: 40rem;
+}
+
+.mark {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  max-width: 16rem;
+  opacity: 0;
+  animation: mark-in linear both;
+  animation-timeline: view();
+}
+
+.mark img {
+  flex: none;
+  border-radius: 4px;
+}
+
+.mark strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.mark span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #5c554c;
+}
+
+.mark-claude {
+  grid-column: 1;
+  justify-self: end;
+  animation-range: cover 15% cover 35%;
+}
+
+.mark-imagine {
+  grid-column: 3;
+  animation-range: cover 25% cover 45%;
+}
+
+.mark-seedance {
+  grid-column: 1;
+  justify-self: end;
+  animation-range: cover 40% cover 60%;
+}
+
+.mark-eleven {
+  grid-column: 3;
+  animation-range: cover 55% cover 75%;
+}
+
+.mark-grok-desk {
+  grid-column: 1;
+  justify-self: end;
+  animation-range: cover 70% cover 90%;
+}
+
+@keyframes mark-in {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  background: var(--ink);
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #1c1914;
+}
+
+.link-quiet {
+  color: #5c554c;
+}
+
+.colophon {
+  grid-column: 2;
+  padding: 0 0 3rem;
+  font-size: 0.85rem;
+  color: #5c554c;
+}
+
+.colophon a {
+  color: #3d5c56;
+}
+
+@media (max-width: 860px) {
+  .story {
+    grid-template-columns: 1.25rem minmax(0, 1fr) 1.25rem;
+    row-gap: 2.5rem;
+  }
+
+  .mark,
+  .mark-claude,
+  .mark-imagine,
+  .mark-seedance,
+  .mark-eleven,
+  .mark-grok-desk {
+    grid-column: 2;
+    justify-self: start;
+    max-width: 100%;
+  }
+
+  .wax {
+    width: min(42vw, 160px);
+  }
+}
+
+@supports not (animation-timeline: view()) {
+  .hero-track {
+    height: auto;
+  }
+
+  .hero-stage {
+    position: static;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sheet {
+    animation: none;
+    clip-path: none;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .wax {
+    animation: none;
+    top: 8%;
+    left: auto;
+    right: 8%;
+    translate: 0;
+    transform: none;
+    width: 88px;
+  }
+
+  .seal-copy {
+    animation: none;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    translate: none;
+    margin: 0 auto;
+    padding: 70vh 1rem 2rem;
+    color: var(--ink);
+    text-shadow: none;
+  }
+
+  .title-line {
+    animation: none;
+    stroke-dashoffset: 0;
+    fill: var(--ink);
+    stroke: transparent;
+  }
+
+  .mark {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-track {
+    height: auto;
+  }
+
+  .hero-stage {
+    position: static;
+    height: auto;
+    min-height: auto;
+  }
+
+  .sheet {
+    animation: none;
+    clip-path: none;
+    position: relative;
+    min-height: 72vh;
+  }
+
+  .wax {
+    animation: none;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    left: auto;
+    translate: 0;
+    transform: none;
+    width: 72px;
+  }
+
+  .seal-copy {
+    animation: none;
+    position: relative;
+    inset: auto;
+    translate: none;
+    padding: 8rem 1.25rem 1.5rem;
+    color: var(--ink);
+    text-shadow: none;
+  }
+
+  .title-wrap {
+    position: relative;
+    inset: auto;
+    height: 42vw;
+    min-height: 12rem;
+    max-height: 18rem;
+    margin: 0 1rem;
+  }
+
+  .title-line {
+    animation: none;
+    stroke-dashoffset: 0;
+    fill: var(--ink);
+    stroke: transparent;
+  }
+
+  .mark {
+    animation: none;
+    opacity: 1;
+  }
 }
