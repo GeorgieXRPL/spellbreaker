@@ -3,17 +3,10 @@ export const studio = {
   connect: "https://story-studio-gilt.vercel.app/connect",
 } as const;
 
-export const chain = {
-  name: "Robinhood Chain",
-  id: 4663,
-  explorer: "https://robinhoodchain.blockscout.com",
-} as const;
-
 export const copy = {
   title: "Spell Breaker",
   description:
     "Timeline studio for a brief, a beat map, and a cut. Imagine, Seedance, and a Grok desk.",
-  explorer: "Explorer",
   whatHeading: "The timeline studio",
   whatBody:
     "Drop a brief. The steward writes a bible and a beat map. Clips land on a timeline. You generate, recut, and score.",
@@ -24,7 +17,7 @@ export const copy = {
   ctaHeading: "Open the studio",
   ctaPrimary: "New story",
   ctaSecondary: "Connect Grok",
-  footer: "Spell Breaker. Robinhood Chain. Not financial advice.",
+  footer: "Spell Breaker",
 } as const;
 
 export const agents = [
