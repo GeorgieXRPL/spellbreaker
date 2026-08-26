@@ -109,40 +109,30 @@ a {
   }
 }
 
-.scroll-picks {
+.hero-scroll {
   position: absolute;
   left: 50%;
-  top: auto;
-  bottom: 6%;
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem 1rem;
-  width: min(92vw, 44rem);
+  top: 28%;
+  width: min(42vw, 240px);
   translate: -50% 0;
+  z-index: 3;
+  transform-origin: center top;
+  animation: scroll-park linear both;
+  animation-timeline: --unroll;
+  animation-range: contain 8% contain 42%;
+  will-change: transform;
 }
 
-.scroll-pick {
-  margin: 0;
-  width: min(22vw, 7.5rem);
-  text-align: center;
-}
-
-.scroll-pick img {
+.hero-scroll img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 6px;
 }
 
-.scroll-pick figcaption {
-  margin-top: 0.35rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--cream);
-  text-shadow: 0 1px 8px rgba(14, 13, 11, 0.85);
+@keyframes scroll-park {
+  to {
+    transform: translate(34vw, -22vh) scale(0.52);
+  }
 }
 
 .seal-copy {
@@ -373,8 +363,8 @@ a {
     max-width: 100%;
   }
 
-  .scroll-pick {
-    width: min(40vw, 7rem);
+  .hero-scroll {
+    width: min(52vw, 200px);
   }
 }
 
@@ -396,18 +386,14 @@ a {
     min-height: 100vh;
   }
 
-  .scroll-picks {
-    position: relative;
+  .hero-scroll {
+    animation: none;
+    top: 8%;
     left: auto;
-    top: auto;
-    translate: none;
-    margin: 1.5rem auto 0;
-    padding-top: 1.5rem;
-  }
-
-  .scroll-pick figcaption {
-    color: var(--ink);
-    text-shadow: none;
+    right: 8%;
+    translate: 0;
+    transform: none;
+    width: 120px;
   }
 
   .seal-copy {
@@ -453,18 +439,15 @@ a {
     min-height: 72vh;
   }
 
-  .scroll-picks {
-    position: relative;
+  .hero-scroll {
+    animation: none;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
     left: auto;
-    top: auto;
-    translate: none;
-    margin: 1.25rem auto 0;
-    padding-top: 1.25rem;
-  }
-
-  .scroll-pick figcaption {
-    color: var(--ink);
-    text-shadow: none;
+    translate: 0;
+    transform: none;
+    width: 96px;
   }
 
   .seal-copy {
